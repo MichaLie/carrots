@@ -46,16 +46,16 @@ function setup() {
       }
     }
   
+    if (pigs.length === 0) {
+      textSize(32);
+      textAlign(CENTER, CENTER);
+      fill(255);
+      text("You won!", width / 2, height / 2);
+      console.log("You won!");
+      noLoop();
+    }
   }
-
-  if (pigs.length === 0) {
-    textSize(32);
-    textAlign(CENTER, CENTER);
-    fill(255);
-    text("You won!", width / 2, height / 2);
-    console.log("You won!");
-    noLoop();
-  }
+  
 
 function keyPressed() {
     if (key === ' ') {
