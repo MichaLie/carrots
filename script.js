@@ -123,14 +123,20 @@ class pig {
     }
   }
   hits(target) {
-    let d = dist(
-      this.x + this.img.width / 4,
-      this.y + this.img.height / 4,
-      target.x + target.img.width / 3,
-      target.y + target.img.height / 3
-    );
-    return d < (this.img.width / 4 + target.img.width / 3);
+    let pigHalfWidth = this.img.width / 4;
+    let pigHalfHeight = this.img.height / 4;
+    let playerHalfWidth = target.img.width / 3;
+    let playerHalfHeight = target.img.height / 3;
+  
+    let pigCenterX = this.x + pigHalfWidth;
+    let pigCenterY = this.y + pigHalfHeight;
+    let playerCenterX = target.x + playerHalfWidth;
+    let playerCenterY = target.y + playerHalfHeight;
+  
+    return abs(pigCenterX - playerCenterX) < (pigHalfWidth + playerHalfWidth) &&
+      abs(pigCenterY - playerCenterY) < (pigHalfHeight + playerHalfHeight);
   }
+  
 }
 
 class carot {
