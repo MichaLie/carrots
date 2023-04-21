@@ -21,7 +21,7 @@ function setup() {
 
   for (let i = 0; i < numRows; i++) {
     for (let j = 0; j < numpigsPerRow; j++) {
-      pigs.push(new pig(pigImg, j * pigspacingX + pigspacingX / 2, i * pigspacingY + height / 10));
+      pigs.push(new Pig(pigImg, j * pigspacingX + pigspacingX / 2, i * pigspacingY + height / 10));
     }
   }
 }
@@ -98,7 +98,7 @@ class Player {
   }
 }
 
-class pig {
+class Pig {
   constructor(img, x, y) {
     this.img = img;
     this.x = x;
@@ -136,7 +136,7 @@ class pig {
   }
 }
 
-class carot {
+class Carot {
   constructor(img, x, y) {
     this.img = img;
     this.x = x;
