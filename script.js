@@ -29,9 +29,6 @@ function setup() {
 function draw() {
   image(bgImg, 0, 0, width, height);
 
-  player.show();
-  player.move();
-
   let gameOver = false;
 
   for (let pig of pigs) {
@@ -56,6 +53,9 @@ function draw() {
     }
   }
 
+  player.show();
+  player.move();
+
   if (gameOver) {
     textSize(width / 20); // Change this value to increase/decrease the font size
     textAlign(CENTER, CENTER);
@@ -72,6 +72,7 @@ function draw() {
     noLoop();
   }
 }
+
 
 function keyPressed() {
   if (keyCode === 32) { // 32 is the keyCode for spacebar
