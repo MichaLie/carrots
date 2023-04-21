@@ -56,7 +56,6 @@ function setup() {
     console.log("You won!");
     noLoop();
   }
-}
 
 function keyPressed() {
     if (key === ' ') {
