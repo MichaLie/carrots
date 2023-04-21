@@ -14,6 +14,15 @@ function setup() {
 
   player = new Player(playerImg);
 
+  platformHeight = height / 8;
+  platformWidth = width - 100;
+  platformX = width / 2 - platformWidth / 2;
+  platformY = height - platformHeight;
+  
+  // Create the platform as a simple rectangle shape
+  platform = createSprite(platformX, platformY, platformWidth, platformHeight);
+  platform.shapeColor = color('#4C4C4C');
+  
   let numpigsPerRow = 25;
   let numRows = 2;
   let pigspacingX = width / numpigsPerRow;
