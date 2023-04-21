@@ -74,10 +74,18 @@ function draw() {
   }
 }
 
+function keyPressed() {
+  if (keyCode === 32) { // 32 is the keyCode for spacebar
+    let carot = new Carot(carotsImg, player.x + player.img.width * 1.5 / 2, height - player.img.height * 1.5);
+    carots.push(carot);
+  }
+}
+
 class Player {
   constructor(img) {
     this.img = img;
-    this.x = width / 2 - this.img.width / 4;
+    this.scale = 1.5;
+    this.x = width / 2 - this.img.width * this.scale / 2;
     this.speed = 5;
   }
 
