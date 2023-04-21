@@ -33,16 +33,14 @@ function setup() {
     player.show();
     player.move();
   
+    let gameOver = false;
+  
     for (let pig of pigs) {
       pig.show();
       pig.move();
       if (pig.hits(player)) {
-        textSize(32);
-        textAlign(CENTER, CENTER);
-        fill(255);
-        text("You killed the bunny!!! Game over!!!", width / 2, height / 2);
-        console.log("You killed the bunny!!! Game over!!!");
-        noLoop();
+        gameOver = true;
+        break;
       }
     }
   
@@ -59,24 +57,20 @@ function setup() {
       }
     }
   
-    if (pigs.length === 0) {
+    if (gameOver) {
+      textSize(72); // Change this value to increase/decrease the font size
+      textAlign(CENTER, CENTER);
+      fill(255);
+      text("You killed the bunny!!! Game over!!!", width / 2, height / 2);
+      console.log("You killed the bunny!!! Game over!!!");
+      noLoop();
+    } else if (pigs.length === 0) {
       textSize(32);
       textAlign(CENTER, CENTER);
       fill(255);
       text("You won!", width / 2, height / 2);
       console.log("You won!");
       noLoop();
-    } else {
-      for (let pig of pigs) {
-        if (pig.hits(player)) {
-          textSize(32);
-          textAlign(CENTER, CENTER);
-          fill(255);
-          text("You killed the bunny!!! Game over!!!", width / 2, height / 2);
-          console.log("You killed the bunny!!! Game over!!!");
-          noLoop();
-        }
-      }
     }
   }
   
