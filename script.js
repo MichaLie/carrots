@@ -147,7 +147,7 @@ class Carot {
     this.img = img;
     this.x = x;
     this.y = y;
-    this.speed = 10;
+    this.speed = 10 * 2/3; // adjust the speed to 2/3
   }
 
   show() {
