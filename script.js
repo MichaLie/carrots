@@ -26,6 +26,7 @@ function setup() {
   }
 }
 
+
 function draw() {
   image(bgImg, 0, 0, width, height);
 
@@ -70,12 +71,6 @@ function draw() {
     text("You killed them all!! Congrats!!", width / 2, height / 2);
     console.log("You killed them all!! Congrats!!");
     noLoop();
-  }
-}
-
-function keyPressed() {
-  if (keyCode === 32) { // 32 is the keyCode for the spacebar
-    carots.push(new Carot(carotsImg, player.x + player.img.width / 2 - carotsImg.width / 2, height - player.img.height * 1.5));
   }
 }
 
