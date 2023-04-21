@@ -11,14 +11,14 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
+  
   player = new Player(playerImg);
 
   platformHeight = height / 8;
   platformWidth = width - 100;
   platformX = width / 2 - platformWidth / 2;
   platformY = height - platformHeight;
-  
+
   // Create the platform as a simple rectangle shape
   platform = createSprite(platformX, platformY, platformWidth, platformHeight);
   platform.shapeColor = color('#4C4C4C');
@@ -26,7 +26,7 @@ function setup() {
   let numpigsPerRow = 25;
   let numRows = 2;
   let pigspacingX = width / numpigsPerRow;
-  let pigspacingY = height / 8;
+  let pigspacingY = height / 12;
 
   for (let i = 0; i < numRows; i++) {
     for (let j = 0; j < numpigsPerRow; j++) {
@@ -64,10 +64,6 @@ function draw() {
       }
     }
   }
-
-
-  player.show();
-  player.move();
 
   if (gameOver) {
     textSize(width / 20);
