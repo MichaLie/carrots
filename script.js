@@ -49,7 +49,7 @@ function setup() {
     for (let carot of carots) {
       carot.show();
       carot.move();
-      
+  
       for (let i = pigs.length - 1; i >= 0; i--) {
         if (carot.hits(pigs[i])) {
           pigs.splice(i, 1);
@@ -66,16 +66,27 @@ function setup() {
       text("You won!", width / 2, height / 2);
       console.log("You won!");
       noLoop();
+    } else {
+      for (let pig of pigs) {
+        if (pig.hits(player)) {
+          textSize(32);
+          textAlign(CENTER, CENTER);
+          fill(255);
+          text("You killed the bunny!!! Game over!!!", width / 2, height / 2);
+          console.log("You killed the bunny!!! Game over!!!");
+          noLoop();
+        }
+      }
     }
   }
   
   
-
-function keyPressed() {
+  function keyPressed() {
     if (key === ' ') {
-      carots.push(new carot(carotsImg, player.x + player.img.width / 2 - carotsImg.width / 2, height - player.img.height));
+      carots.push(new carot(carotsImg, player.x + player.img.width / 2 - carotsImg.width / 2, height - player.img.height * 1.5));
     }
   }
+  
 
   class Player {
     constructor(img) {
