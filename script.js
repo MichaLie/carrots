@@ -131,12 +131,12 @@ class pig {
     let pigCenterX = this.x + pigHalfWidth;
     let pigCenterY = this.y + pigHalfHeight;
     let playerCenterX = target.x + playerHalfWidth;
-    let playerCenterY = target.y + playerHalfHeight;
+    let playerCenterY = height - target.img.height * 1.5 + playerHalfHeight;
   
     return abs(pigCenterX - playerCenterX) < (pigHalfWidth + playerHalfWidth) &&
       abs(pigCenterY - playerCenterY) < (pigHalfHeight + playerHalfHeight);
-  }  
-  
+  }
+    
 }
 
 class carot {
