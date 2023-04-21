@@ -29,6 +29,9 @@ function setup() {
 function draw() {
   image(bgImg, 0, 0, width, height);
 
+  player.show();
+  player.move();
+
   let gameOver = false;
 
   for (let pig of pigs) {
@@ -53,18 +56,19 @@ function draw() {
     }
   }
 
+
   player.show();
   player.move();
 
   if (gameOver) {
-    textSize(width / 20); // Change this value to increase/decrease the font size
+    textSize(width / 20);
     textAlign(CENTER, CENTER);
     fill(255);
     text("You killed the bunny!!! Game over!!!", width / 2, height / 2);
     console.log("You killed the bunny!!! Game over!!!");
     noLoop();
   } else if (pigs.length === 0) {
-    textSize(width / 20); // Change this value to increase/decrease the font size
+    textSize(width / 20);
     textAlign(CENTER, CENTER);
     fill(255);
     text("You killed them all!! Congrats!!", width / 2, height / 2);
