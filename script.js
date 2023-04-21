@@ -27,31 +27,25 @@ function setup() {
     }
   }
 
-function draw() {
-  image(bgImg, 0, 0, width, height);
-
-  player.show();
-  player.move();
-
-  for (let pig of pigs) {
-    pig.show();
-    pig.move();
-  }
-
-  for (let i = carots.length - 1; i >= 0; i--) {
-    carots[i].show();
-    carots[i].move();
-    if (carots[i].hits(player)) {
-      console.log("Game Over!");
-      noLoop();
-    }
-    for (let j = pigs.length - 1; j >= 0; j--) {
-      if (carots[i].hits(pigs[j])) {
-        carots.splice(i, 1);
-        pigs.splice(j, 1);
-        break;
+  function draw() {
+    image(bgImg, 0, 0, width, height);
+  
+    player.show();
+    player.move();
+  
+    for (let pig of pigs) {
+      pig.show();
+      pig.move();
+      if (pig.hits(player)) {
+        textSize(32);
+        textAlign(CENTER, CENTER);
+        fill(255);
+        text("You killed the bunny!!! Game over!!!", width / 2, height / 2);
+        console.log("You killed the bunny!!! Game over!!!");
+        noLoop();
       }
     }
+  
   }
 
   if (pigs.length === 0) {
@@ -109,6 +103,15 @@ class pig {
       this.direction *= -1;
       this.y += this.img.height / 2;
     }
+  }
+  hits(target) {
+    let d = dist(
+      this.x + this.img.width / 4,
+      this.y + this.img.height / 4,
+      target.x + target.img.width / 3,
+      target.y + target.img.height / 3
+    );
+    return d < (this.img.width / 4 + target.img.width / 3);
   }
 }
 
