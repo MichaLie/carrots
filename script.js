@@ -75,7 +75,7 @@ function draw() {
 
 function keyPressed() {
   if (keyCode === 32) { // 32 is the keyCode for the spacebar
-    carots.push(new carot(carotsImg, player.x + player.img.width * player.scale / 2 - carotsImg.width * player.scale / 2, height - player.img.height * player.scale * 1.5));
+    carots.push(new Carot(carotsImg, player.x + player.img.width * player.scale / 2 - carotsImg.width * player.scale / 2, height - player.img.height * player.scale * 1.5));
   }
 }
 
