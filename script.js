@@ -118,6 +118,7 @@ class Pig {
     this.scale = min(width / this.img.width, height / this.img.height) / 10;
     this.speed = width / 300;
     this.direction = 1;
+    this.moveDown = false; // Add this variable to control when to move down
   }
 
   show() {
@@ -128,9 +129,13 @@ class Pig {
     this.x += this.speed * this.direction;
     if (this.x < 0 || this.x > width - this.img.width * this.scale) {
       this.direction *= -1;
-      this.y += this.img.height * this.scale / 2;
+      if (this.moveDown) { // Only move down if moveDown is true
+        this.y += this.img.height * this.scale / 2;
+      }
+      this.moveDown = !this.moveDown; // Toggle moveDown variable
     }
   }
+
 
   hits(target) {
     let pigHalfWidth = this.img.width * this.scale / 2;
