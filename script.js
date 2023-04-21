@@ -46,6 +46,19 @@ function setup() {
       }
     }
   
+    for (let carot of carots) {
+      carot.show();
+      carot.move();
+      
+      for (let i = pigs.length - 1; i >= 0; i--) {
+        if (carot.hits(pigs[i])) {
+          pigs.splice(i, 1);
+          carots.splice(carots.indexOf(carot), 1);
+          break;
+        }
+      }
+    }
+  
     if (pigs.length === 0) {
       textSize(32);
       textAlign(CENTER, CENTER);
@@ -55,6 +68,7 @@ function setup() {
       noLoop();
     }
   }
+  
   
 
 function keyPressed() {
