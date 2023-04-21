@@ -14,7 +14,7 @@ function setup() {
 
   player = new Player(playerImg);
 
-  let numpigsPerRow = 10;
+  let numpigsPerRow = 25;
   let numRows = 2;
   let pigspacingX = width / numpigsPerRow;
   let pigspacingY = height / 12;
