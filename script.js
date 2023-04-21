@@ -63,18 +63,19 @@ function draw() {
   if (gameOver) {
     textSize(width / 20);
     textAlign(CENTER, CENTER);
-    fill(255);
+    fill(255); // white text
     text("You killed the bunny!!! Game over!!!", width / 2, height / 2);
     console.log("You killed the bunny!!! Game over!!!");
     noLoop();
   } else if (pigs.length === 0) {
     textSize(width / 20);
     textAlign(CENTER, CENTER);
-    fill(255);
+    fill(255); // white text
     text("You killed them all!! Congrats!!", width / 2, height / 2);
     console.log("You killed them all!! Congrats!!");
     noLoop();
   }
+  
 }
 
 
@@ -147,7 +148,7 @@ class Carot {
     this.img = img;
     this.x = x;
     this.y = y;
-    this.speed = 10 * 2/3; // adjust the speed to 2/3
+    this.speed = 10 * 1/3; // adjust the speed to 2/3
   }
 
   show() {
