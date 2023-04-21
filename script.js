@@ -75,26 +75,25 @@ function draw() {
 
 function keyPressed() {
   if (keyCode === 32) { // 32 is the keyCode for the spacebar
-    carots.push(new Carot(carotsImg, player.x + player.img.width * player.scale / 2 - carotsImg.width * player.scale / 2, height - player.img.height * player.scale * 1.5));
+    carots.push(new Carot(carotsImg, player.x + player.img.width / 2 - carotsImg.width / 2, height - player.img.height * 1.5));
   }
 }
 
 class Player {
   constructor(img) {
     this.img = img;
-    this.x = width / 2 - this.img.width * this.scale / 4;
-    this.scale = min(width / this.img.width, height / this.img.height) / 8;
-    this.speed = width / 200;
+    this.x = width / 2 - this.img.width / 4;
+    this.speed = 5;
   }
 
   show() {
-    image(this.img, this.x, height - this.img.height * this.scale * 1.5, this.img.width * this.scale, this.img.height * this.scale);
+    image(this.img, this.x, height - this.img.height * 1.5, this.img.width * 1.5, this.img.height * 1.5);
   }
 
   move() {
     if (keyIsDown(LEFT_ARROW)) this.x -= this.speed;
     if (keyIsDown(RIGHT_ARROW)) this.x += this.speed;
-    this.x = constrain(this.x, 0, width - this.img.width * this.scale);
+    this.x = constrain(this.x, 0, width - this.img.width);
   }
 }
 
@@ -141,12 +140,11 @@ class Carot {
     this.img = img;
     this.x = x;
     this.y = y;
-    this.scale = min(width / this.img.width, height / this.img.height) / 15;
-    this.speed = height / 60;
+    this.speed = 10;
   }
 
   show() {
-    image(this.img, this.x, this.y, this.img.width * this.scale, this.img.height * this.scale);
+    image(this.img, this.x, this.y, this.img.width / 3.333, this.img.height / 3.333);
   }
 
   move() {
@@ -154,9 +152,8 @@ class Carot {
   }
 
   hits(target) {
-    let d = dist(this.x + this.img.width * this.scale / 2, this.y + this.img.height * this.scale / 2, target.x + target.img.width * target.scale / (target instanceof pig ? 4 : 2), target.y + target.img.height * target.scale / (target instanceof pig ? 4 : 2));
-    return d < (this.img.width * this.scale / 2 + target.img.width * target.scale / (target instanceof pig ? 4 :
-      2));
-    }
+    let d = dist(this.x + this.img.width / 20, this.y + this.img.height / 20, target.x + target.img.width / (target instanceof Pig ? 12 : 4), target.y + target.img.height / (target instanceof Pig ? 12 : 4));
+    return d < (this.img.width / 20 + target.img.width / (target instanceof Pig ? 12 : 4));
   }
+}
   
