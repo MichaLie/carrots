@@ -18,7 +18,7 @@ function setup() {
     let numpigsPerRow = 15;
     let numRows = 3;
     let pigspacingX = width / numpigsPerRow;
-    let pigspacingY = 80;
+    let pigspacingY = 65;
     
     for (let i = 0; i < numRows; i++) {
       for (let j = 0; j < numpigsPerRow; j++) {
