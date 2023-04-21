@@ -75,7 +75,7 @@ function draw() {
 
 function keyPressed() {
   if (key === ' ') {
-    carots.push(new carot(carotsImg, player.x + player.img.width * player.scale / 2 - carotsImg.width * carot.scale / 2, height - player.img.height * player.scale * 1.5));
+    carots.push(new carot(carotsImg, player.x + player.img.width * player.scale / 2 - carotsImg.width * player.scale / 2, height - player.img.height * player.scale * 1.5));
   }
 }
 
