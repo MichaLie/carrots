@@ -97,7 +97,7 @@ function setup() {
     move() {
       if (keyIsDown(LEFT_ARROW)) this.x -= this.speed;
       if (keyIsDown(RIGHT_ARROW)) this.x += this.speed;
-      this.x = constrain(this.x, 0, width - this.img.width);
+      this.x = constrain(this.x, 0, width - this.img.width * 1.5);
     }
 }
 
