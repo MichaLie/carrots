@@ -73,28 +73,28 @@ function draw() {
   }
 }
 
-
 function keyPressed() {
   if (key === ' ') {
-    carots.push(new carot(carotsImg, player.x + player.img.width / 2 - carotsImg.width / 2, height - player.img.height * 1.5));
+    carots.push(new carot(carotsImg, player.x + player.img.width * player.scale / 2 - carotsImg.width * carot.scale / 2, height - player.img.height * player.scale * 1.5));
   }
 }
 
 class Player {
   constructor(img) {
     this.img = img;
-    this.x = width / 2 - this.img.width / 4;
+    this.x = width / 2 - this.img.width * this.scale / 4;
+    this.scale = min(width / this.img.width, height / this.img.height) / 8;
     this.speed = width / 200;
   }
 
   show() {
-    image(this.img, this.x, height - this.img.height * 1.5, this.img.width * 1.5, this.img.height * 1.5);
+    image(this.img, this.x, height - this.img.height * this.scale * 1.5, this.img.width * this.scale, this.img.height * this.scale);
   }
 
   move() {
     if (keyIsDown(LEFT_ARROW)) this.x -= this.speed;
     if (keyIsDown(RIGHT_ARROW)) this.x += this.speed;
-    this.x = constrain(this.x, 0, width - this.img.width * 1.5);
+    this.x = constrain(this.x, 0, width - this.img.width * this.scale);
   }
 }
 
@@ -103,31 +103,33 @@ class pig {
     this.img = img;
     this.x = x;
     this.y = y;
+    this.scale = min(width / this.img.width, height / this.img.height) / 10;
     this.speed = width / 300;
     this.direction = 1;
   }
 
   show() {
-    image(this.img, this.x, this.y, this.img.width / 2, this.img.height / 2);
+    image(this.img, this.x, this.y, this.img.width * this.scale, this.img.height * this.scale);
   }
 
   move() {
     this.x += this.speed * this.direction;
-    if (this.x < 0 || this.x > width - this.img.width) {
+    if (this.x < 0 || this.x > width - this.img.width * this.scale) {
       this.direction *= -1;
-      this.y += this.img.height / 2;
+      this.y += this.img.height * this.scale / 2;
     }
   }
+
   hits(target) {
-    let pigHalfWidth = this.img.width / 4;
-    let pigHalfHeight = this.img.height / 4;
-    let playerHalfWidth = target.img.width / 4;
-    let playerHalfHeight = target.img.height / 6;
+    let pigHalfWidth = this.img.width * this.scale / 2;
+    let pigHalfHeight = this.img.height * this.scale / 2;
+    let playerHalfWidth = target.img.width * target.scale / 2;
+    let playerHalfHeight = target.img.height * target.scale / 3;
 
     let pigCenterX = this.x + pigHalfWidth;
     let pigCenterY = this.y + pigHalfHeight;
     let playerCenterX = target.x + playerHalfWidth;
-    let playerCenterY = height - target.img.height * 1.5 * (height / 1080) + playerHalfHeight;
+    let playerCenterY = height - target.img.height * target.scale * 1.5 + playerHalfHeight;
 
     return abs(pigCenterX - playerCenterX) < (pigHalfWidth + playerHalfWidth) &&
       abs(pigCenterY - playerCenterY) < (pigHalfHeight + playerHalfHeight);
@@ -139,11 +141,12 @@ class carot {
     this.img = img;
     this.x = x;
     this.y = y;
+    this.scale = min(width / this.img.width, height / this.img.height) / 15;
     this.speed = height / 60;
   }
 
   show() {
-    image(this.img, this.x, this.y, this.img.width / 3.333, this.img.height / 3.333);
+    image(this.img, this.x, this.y, this.img.width * this.scale, this.img.height * this.scale);
   }
 
   move() {
@@ -151,9 +154,9 @@ class carot {
   }
 
   hits(target) {
-    let d = dist(this.x + this.img.width / 20, this.y + this.img.height / 20, target.x + target.img.width / (target instanceof pig ? 12 : 4), target.y + target.img.height / (target instanceof pig ? 12 : 4));
-    return d < (this.img.width / 20 + target.img.width / (target instanceof pig ? 12 : 4));
+    let d = dist(this.x + this.img.width * this.scale / 2, this.y + this.img.height * this.scale / 2, target.x + target.img.width * target.scale / (target instanceof pig ? 4 : 2), target.y + target.img.height * target.scale / (target instanceof pig ? 4 : 2));
+    return d < (this.img.width * this.scale / 2 + target.img.width * target.scale / (target instanceof pig ? 4 :
+      2));
+    }
   }
-}
-
-
+  
