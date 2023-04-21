@@ -26,7 +26,6 @@ function setup() {
   }
 }
 
-
 function draw() {
   image(bgImg, 0, 0, width, height);
 
@@ -90,13 +89,13 @@ class Player {
   }
 
   show() {
-    image(this.img, this.x, height - this.img.height * 1.5, this.img.width * 1.5, this.img.height * 1.5);
+    image(this.img, this.x, height - this.img.height * this.scale, this.img.width * this.scale, this.img.height * this.scale);
   }
 
   move() {
     if (keyIsDown(LEFT_ARROW)) this.x -= this.speed;
     if (keyIsDown(RIGHT_ARROW)) this.x += this.speed;
-    this.x = constrain(this.x, 0, width - this.img.width);
+    this.x = constrain(this.x, 0, width - this.img.width * this.scale);
   }
 }
 
@@ -131,7 +130,7 @@ class Pig {
     let pigCenterX = this.x + pigHalfWidth;
     let pigCenterY = this.y + pigHalfHeight;
     let playerCenterX = target.x + playerHalfWidth;
-    let playerCenterY = height - target.img.height * target.scale * 1.5 + playerHalfHeight;
+    let playerCenterY = height - target.img.height * target.scale + playerHalfHeight;
 
     return abs(pigCenterX - playerCenterX) < (pigHalfWidth + playerHalfWidth) &&
       abs(pigCenterY - playerCenterY) < (pigHalfHeight + playerHalfHeight);
@@ -159,4 +158,3 @@ class Carot {
     return d < (this.img.width / 20 + target.img.width / (target instanceof Pig ? 12 : 4));
   }
 }
-  
