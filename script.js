@@ -127,12 +127,21 @@ class Pig {
 
   move() {
     this.x += this.speed * this.direction;
-    if (this.x < 0 || this.x > width - this.img.width * this.scale) {
+
+    if (this.x < 0) {
+      this.x = 0;
       this.direction *= -1;
-      if (this.moveDown) { // Only move down if moveDown is true
+      if (this.moveDown) {
         this.y += this.img.height * this.scale / 2;
       }
-      this.moveDown = !this.moveDown; // Toggle moveDown variable
+      this.moveDown = !this.moveDown;
+    } else if (this.x > width - this.img.width * this.scale) {
+      this.x = width - this.img.width * this.scale;
+      this.direction *= -1;
+      if (this.moveDown) {
+        this.y += this.img.height * this.scale / 2;
+      }
+      this.moveDown = !this.moveDown;
     }
   }
 
