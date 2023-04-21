@@ -1,4 +1,4 @@
-// Global variables
+// Global variables 
 let playerImg, pigImg, carotsImg, bgImg;
 let player, pigs = [], carots = [];
 
