@@ -127,7 +127,7 @@ class pig {
     let pigCenterX = this.x + pigHalfWidth;
     let pigCenterY = this.y + pigHalfHeight;
     let playerCenterX = target.x + playerHalfWidth;
-    let playerCenterY = height - target.img.height * 1.5 + playerHalfHeight;
+    let playerCenterY = height - target.img.height * 1.5 * (height / 1080) + playerHalfHeight;
 
     return abs(pigCenterX - playerCenterX) < (pigHalfWidth + playerHalfWidth) &&
       abs(pigCenterY - playerCenterY) < (pigHalfHeight + playerHalfHeight);
